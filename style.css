@@ -20,7 +20,8 @@ background: var(--clr);
 }
 
 .navigation {
-width: 400px;
+    position: relative;
+    width: 400px;
 height: 100px;
 background: #fff;
 display: flex;
@@ -38,6 +39,7 @@ height: 100%; /* Full height for centering */
 }
 
 .navigation ul li {
+    position: relative;
 list-style: none;
 display: flex;
 justify-content: center;
@@ -45,36 +47,43 @@ align-items: center;
 flex-direction: column;
 width: 70px;
 height: 100%; /* Full height to align vertically */
+z-index: 1;
 }
 
 .navigation ul li a {
+    position: relative;
 display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
+font-weight: 500;
 text-align: center;
 width: 100%;
 height: 100%; /* Full height for better centering */
 }
 
 .navigation ul li a .icon {
+    position: relative;
 font-size: 1.8em;
 color: var(--clr);
+line-height: 75px;
+text-align: center;
 margin-bottom: 5px; /* Space between icon and text */
-transition: 0.3s ease;
+transition: 0.5s ease;
 }
 
 .navigation ul li a .text {
+     position: relative;
 font-weight: 400;
 font-size: 0.75em;
 color: var(--clr);
 opacity: 0;
-transition: 0.3s ease;
+transition: 0.5s ease;
 transform: translateY(20px);
 }
 
 .navigation ul li.active a .icon {
-transform: translateY(-20px);
+transform: translateY(-25px);
 }
 
 .navigation ul li.active a .text {
@@ -90,4 +99,58 @@ transform: translateY(10px);
     background: #29fd53; /* Green background */
     border-radius: 50px; /* Rounded edges */
     transition: 0.5s; /* Smooth movement */
+    border-radius: 50%;
+    border: 6px solid var(--clr);
+    transition: 0.5s ;
+}
+
+.indicator::before
+{
+   content: '';
+   position: absolute; 
+   top: 50%;
+   left: -22px;
+   width: 20px;
+   height: 20px;
+   background: transparent;
+   border-top-right-radius: 20px;
+   box-shadow: 1px -10px 0 0 var(--clr);
+}
+
+.indicator::after
+{
+   content: '';
+   position: absolute; 
+   top: 50%;
+   right: -22px;
+   width: 20px;
+   height: 20px;
+   background: transparent;
+   border-top-left-radius: 20px;
+   box-shadow: -1px -10px 0 0 var(--clr);
+}
+
+.navigation ul li:nth-child(1).active ~ .indicator
+{
+    transform: translateX(calc(70px * 0));
+}
+
+.navigation ul li:nth-child(2).active ~ .indicator
+{
+    transform: translateX(calc(70px * 1));
+}
+
+.navigation ul li:nth-child(3).active ~ .indicator
+{
+    transform: translateX(calc(70px * 2));
+}
+
+.navigation ul li:nth-child(4).active ~ .indicator
+{
+    transform: translateX(calc(70px * 3));
+}
+
+.navigation ul li:nth-child(5).active ~ .indicator
+{
+    transform: translateX(calc(70px * 4));
 }
